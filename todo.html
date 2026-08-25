@@ -9,9 +9,34 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f4f7f6;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* استایل منو */
+        .navbar {
+            background-color: #1d3557;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            direction: ltr; /* منو چپ به راست نمایش داده شود */
+        }
+
+        .navbar .logo { color: white; font-size: 20px; font-weight: bold; }
+        .navbar ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 20px; }
+        .navbar a { color: #f1faee; text-decoration: none; font-size: 15px; }
+        .navbar a:hover { color: #e76f51; }
+
+        /* بدنه و کارت اصلی */
+        .container {
             display: flex;
             justify-content: center;
+            padding: 30px 20px;
+            flex: 1;
         }
 
         .todo-card {
@@ -22,6 +47,7 @@
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             border-top: 5px solid #2a9d8f;
+            height: fit-content;
         }
 
         h2 {
@@ -56,7 +82,7 @@
 
         button.add-btn:hover { background-color: #218376; }
 
-        /* استایل لیست کارها */
+        /* لیست کارها */
         ul {
             list-style: none;
             padding: 0;
@@ -85,22 +111,48 @@
         }
 
         .delete-btn:hover { background-color: #d64421; }
+
+        footer {
+            background-color: #1d3557;
+            color: #f1faee;
+            text-align: center;
+            padding: 15px 10px;
+            font-size: 14px;
+            margin-top: auto;
+        }
     </style>
 </head>
 <body>
 
-    <div class="todo-card">
-        <h2>لیست کارهای من</h2>
-        
-        <div class="input-group">
-            <input type="text" id="taskInput" placeholder="کار جدید را بنویسید...">
-            <button class="add-btn" onclick="addTask()">افزودن</button>
-        </div>
-
-        <ul id="taskList">
-            <!-- کارهای جدید با جاوااسکریپت اینجا اضافه می‌شوند -->
+    <!-- منوی بالای سایت -->
+    <nav class="navbar">
+        <div class="logo">My Portfolio</div>
+        <ul>
+            <li><a href="index.html">خانه / Home</a></li>
+            <li><a href="about.html">درباره ما / About</a></li>
+            <li><a href="contact.html">تماس / Contact</a></li>
+            <li><a href="todo.html">لیست کارها / To-Do</a></li>
         </ul>
+    </nav>
+
+    <div class="container">
+        <div class="todo-card">
+            <h2>لیست کارهای من</h2>
+            
+            <div class="input-group">
+                <input type="text" id="taskInput" placeholder="کار جدید را بنویسید...">
+                <button class="add-btn" onclick="addTask()">افزودن</button>
+            </div>
+
+            <ul id="taskList">
+                <!-- کارهای جدید با جاوااسکریپت اینجا اضافه می‌شوند -->
+            </ul>
+        </div>
     </div>
+
+    <footer>
+        <p>© 2026 My Multilingual Website. All rights reserved.</p>
+    </footer>
 
     <script>
         function addTask() {
@@ -112,22 +164,17 @@
                 return;
             }
 
-            // ۱. ساخت یک عنصر جدید <li>
             let li = document.createElement('li');
             li.innerHTML = `
                 <span>${taskText}</span>
                 <button class="delete-btn" onclick="deleteTask(this)">حذف</button>
             `;
 
-            // ۲. اضافه کردن <li> به داخل لیست <ul>
             document.getElementById('taskList').appendChild(li);
-
-            // ۳. خالی کردن کادر ورودی
             input.value = "";
         }
 
         function deleteTask(button) {
-            // حذف المان مادر (یعنی همان <li> مربوط به دکمه)
             button.parentElement.remove();
         }
     </script>
