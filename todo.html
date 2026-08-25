@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لیست کارهای روزمره | To-Do List</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .todo-card {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 450px;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-top: 5px solid #2a9d8f;
+        }
+
+        h2 {
+            color: #1d3557;
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        button.add-btn {
+            background-color: #2a9d8f;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button.add-btn:hover { background-color: #218376; }
+
+        /* استایل لیست کارها */
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            background-color: #f8f9fa;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-right: 3px solid #1d3557;
+        }
+
+        .delete-btn {
+            background-color: #e76f51;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .delete-btn:hover { background-color: #d64421; }
+    </style>
+</head>
+<body>
+
+    <div class="todo-card">
+        <h2>لیست کارهای من</h2>
+        
+        <div class="input-group">
+            <input type="text" id="taskInput" placeholder="کار جدید را بنویسید...">
+            <button class="add-btn" onclick="addTask()">افزودن</button>
+        </div>
+
+        <ul id="taskList">
+            <!-- کارهای جدید با جاوااسکریپت اینجا اضافه می‌شوند -->
+        </ul>
+    </div>
+
+    <script>
+        function addTask() {
+            let input = document.getElementById('taskInput');
+            let taskText = input.value.trim();
+
+            if (taskText === "") {
+                alert("لطفاً ابتدا یک کار بنویسید!");
+                return;
+            }
+
+            // ۱. ساخت یک عنصر جدید <li>
+            let li = document.createElement('li');
+            li.innerHTML = `
+                <span>${taskText}</span>
+                <button class="delete-btn" onclick="deleteTask(this)">حذف</button>
+            `;
+
+            // ۲. اضافه کردن <li> به داخل لیست <ul>
+            document.getElementById('taskList').appendChild(li);
+
+            // ۳. خالی کردن کادر ورودی
+            input.value = "";
+        }
+
+        function deleteTask(button) {
+            // حذف المان مادر (یعنی همان <li> مربوط به دکمه)
+            button.parentElement.remove();
+        }
+    </script>
+
+</body>
+</html>
