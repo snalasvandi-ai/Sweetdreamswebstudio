@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ماشین‌حساب | Calculator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* استایل منوی بالا */
+        .navbar {
+            background-color: #1d3557;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            direction: ltr;
+        }
+
+        .navbar .logo { color: white; font-size: 20px; font-weight: bold; }
+        .navbar ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 15px; }
+        .navbar a { color: #f1faee; text-decoration: none; font-size: 15px; }
+        .navbar a:hover { color: #e76f51; }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            padding: 30px 20px;
+            flex: 1;
+        }
+
+        /* کارت اصلی ماشین‌حساب */
+        .calc-card {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 320px;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-top: 5px solid #2a9d8f;
+            height: fit-content;
+        }
+
+        /* صفحه نمایش اعداد */
+        #display {
+            width: 100%;
+            height: 50px;
+            background-color: #e9ecef;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 22px;
+            text-align: left;
+            padding: 10px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+            direction: ltr;
+        }
+
+        /* چیدمان شبکه‌ای دکمه‌ها (Grid) */
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            direction: ltr;
+        }
+
+        button {
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            background-color: #f8f9fa;
+            color: #1d3557;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: background-color 0.2s;
+        }
+
+        button:hover { background-color: #e2e6ea; }
+
+        /* رنگ دکمه‌های عملگر (+ - * /) */
+        button.operator {
+            background-color: #2a9d8f;
+            color: white;
+        }
+        button.operator:hover { background-color: #218376; }
+
+        /* رنگ دکمه پاک کردن (C) */
+        button.clear {
+            background-color: #e76f51;
+            color: white;
+        }
+        button.clear:hover { background-color: #d64421; }
+
+        /* رنگ دکمه مساوی (=) */
+        button.equal {
+            background-color: #1d3557;
+            color: white;
+            grid-column: span 2;
+        }
+        button.equal:hover { background-color: #14213d; }
+
+        footer {
+            background-color: #1d3557;
+            color: #f1faee;
+            text-align: center;
+            padding: 15px 10px;
+            font-size: 14px;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- منوی یکدست بالای صفحه -->
+    <nav class="navbar">
+        <div class="logo">My Portfolio</div>
+        <ul>
+            <li><a href="index.html">خانه / Home</a></li>
+            <li><a href="about.html">درباره ما / About</a></li>
+            <li><a href="contact.html">تماس / Contact</a></li>
+            <li><a href="todo.html">لیست کارها / To-Do</a></li>
+            <li><a href="calculator.html">ماشین حساب / Calc</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="calc-card">
+            <!-- صفحه نمایش ماشین حساب -->
+            <input type="text" id="display" readonly>
+
+            <!-- دکمه‌ها -->
+            <div class="buttons">
+                <button class="clear" onclick="clearDisplay()">C</button>
+                <button onclick="appendValue('/')" class="operator">/</button>
+                <button onclick="appendValue('*')" class="operator">*</button>
+                <button onclick="appendValue('-')" class="operator">-</button>
+
+                <button onclick="appendValue('7')">7</button>
+                <button onclick="appendValue('8')">8</button>
+                <button onclick="appendValue('9')">9</button>
+                <button onclick="appendValue('+')" class="operator">+</button>
+
+                <button onclick="appendValue('4')">4</button>
+                <button onclick="appendValue('5')">5</button>
+                <button onclick="appendValue('6')">6</button>
+                <button onclick="calculate()" class="equal">=</button>
+
+                <button onclick="appendValue('1')">1</button>
+                <button onclick="appendValue('2')">2</button>
+                <button onclick="appendValue('3')">3</button>
+                <button onclick="appendValue('0')">0</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 My Multilingual Website. All rights reserved.</p>
+    </footer>
+
+    <!-- منطق جاوااسکریپت برای محاسبات -->
+    <script>
+        // اضافه کردن عدد یا عملگر کلیک‌شده به صفحه نمایش
+        function appendValue(value) {
+            document.getElementById('display').value += value;
+        }
+
+        // پاک کردن صفحه نمایش
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        // انجام محاسبه ریاضی
+        function calculate() {
+            let display = document.getElementById('display');
+            try {
+                display.value = eval(display.value);
+            } catch (error) {
+                display.value = "خطا!";
+            }
+        }
+    </script>
+
+</body>
+</html>
