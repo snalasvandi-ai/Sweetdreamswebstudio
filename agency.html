@@ -3,72 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Corporate & Agency Theme | Sweet Dreams Web Studio</title>
+    <title>Theme 1: Corporate Blue | Starter Landing Page Demo</title>
     <style>
         :root {
             --primary: #2563eb;
             --primary-dark: #1d4ed8;
-            --accent: #f59e0b;
-            --dark: #0f172a;
-            --light: #f8fafc;
-            --gray: #64748b;
+            --secondary: #0f172a;
+            --accent: #3b82f6;
+            --light-bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
 
         body {
-            background-color: var(--light);
-            color: #334155;
+            background-color: var(--light-bg);
+            color: var(--text-main);
             line-height: 1.6;
+        }
+
+        /* Top Demo Switcher Notice Bar */
+        .demo-bar {
+            background: #1e293b;
+            color: white;
+            padding: 10px 5%;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .demo-badge {
+            background: var(--primary);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 12px;
         }
 
         /* Navbar */
         header {
             background-color: #ffffff;
-            padding: 20px 8%;
+            padding: 18px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
             position: sticky;
             top: 0;
             z-index: 1000;
         }
 
         .logo {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 800;
-            color: var(--dark);
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .logo span { color: var(--primary); }
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            border-radius: 8px;
+            display: inline-block;
+        }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 25px;
         }
 
         nav a {
-            color: var(--dark);
+            color: var(--text-main);
             text-decoration: none;
             font-weight: 600;
-            font-size: 15px;
+            font-size: 14px;
             transition: color 0.3s;
         }
 
         nav a:hover { color: var(--primary); }
 
         .btn {
-            padding: 12px 24px;
+            padding: 10px 22px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 700;
+            font-size: 14px;
             display: inline-block;
             transition: all 0.3s;
             border: none;
@@ -78,48 +109,80 @@
         .btn-primary {
             background-color: var(--primary);
             color: white;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
         }
 
         .btn-primary:hover { background-color: var(--primary-dark); }
 
-        /* Hero */
+        /* Hero Section */
         .hero {
-            padding: 100px 8%;
+            padding: 80px 8%;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            gap: 50px;
             align-items: center;
-            background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
+            background: linear-gradient(180deg, #ffffff 0%, #eff6ff 100%);
         }
 
         .hero h1 {
-            font-size: 48px;
-            color: var(--dark);
-            line-height: 1.2;
+            font-size: 44px;
+            color: var(--secondary);
+            line-height: 1.25;
             margin-bottom: 20px;
+            font-weight: 800;
         }
 
         .hero p {
-            font-size: 18px;
-            color: var(--gray);
+            font-size: 17px;
+            color: var(--text-muted);
             margin-bottom: 30px;
         }
 
-        .hero-img {
-            width: 100%;
-            height: 350px;
-            background-color: #cbd5e1;
-            border-radius: 16px;
+        .hero-buttons {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gray);
-            font-weight: bold;
+            gap: 15px;
         }
 
-        /* Stats */
+        /* Hero Dashboard UI Simulation */
+        .hero-ui-sim {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+        }
+
+        .ui-header {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .ui-dot { width: 12px; height: 12px; border-radius: 50%; }
+        .dot-red { background: #ef4444; }
+        .dot-yellow { background: #f59e0b; }
+        .dot-green { background: #10b981; }
+
+        .ui-chart-sim {
+            height: 160px;
+            background: linear-gradient(180deg, rgba(37,99,235,0.1) 0%, rgba(255,255,255,0) 100%);
+            border-bottom: 2px solid var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            padding: 10px;
+        }
+
+        .chart-bar {
+            width: 12%;
+            background: var(--primary);
+            border-radius: 4px 4px 0 0;
+        }
+
+        /* Stats Bar */
         .stats {
-            background: var(--dark);
+            background: var(--secondary);
             color: white;
             padding: 40px 8%;
             display: grid;
@@ -127,51 +190,76 @@
             text-align: center;
         }
 
-        .stat-item h3 { font-size: 36px; color: var(--primary); }
-        .stat-item p { color: #94a3b8; font-size: 14px; }
+        .stat-item h3 { font-size: 32px; color: #60a5fa; margin-bottom: 5px; }
+        .stat-item p { color: #94a3b8; font-size: 13px; font-weight: 600; uppercase; }
 
         /* Services Section */
-        .section { padding: 90px 8%; }
+        .section { padding: 80px 8%; }
         .section-header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
         }
-        .section-header h2 { font-size: 36px; color: var(--dark); }
-        .section-header p { color: var(--gray); }
+        .section-header h2 { font-size: 32px; color: var(--secondary); margin-bottom: 10px; }
+        .section-header p { color: var(--text-muted); font-size: 16px; }
 
         .grid-3 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
 
         .card {
-            background: white;
-            padding: 40px 30px;
+            background: var(--card-bg);
+            padding: 35px 25px;
             border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            border-bottom: 4px solid transparent;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border: 1px solid #e2e8f0;
             transition: all 0.3s;
         }
 
         .card:hover {
-            border-bottom-color: var(--primary);
-            transform: translateY(-5px);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 25px rgba(37,99,235,0.1);
+            border-color: var(--primary);
         }
 
         .card-icon {
-            width: 50px;
-            height: 50px;
+            width: 48px;
+            height: 48px;
             background: #dbeafe;
             color: var(--primary);
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: bold;
             margin-bottom: 20px;
         }
+
+        /* Portfolio Visual Showcase */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .portfolio-item {
+            height: 200px;
+            background: #cbd5e1;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+        }
+
+        .port-1 { background: linear-gradient(135deg, #2563eb, #1d4ed8); }
+        .port-2 { background: linear-gradient(135deg, #0f172a, #334155); }
+        .port-3 { background: linear-gradient(135deg, #0284c7, #06b6d4); }
 
         /* Pricing Table */
         .pricing-card {
@@ -179,76 +267,86 @@
             padding: 40px 30px;
             border-radius: 16px;
             text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
             border: 1px solid #e2e8f0;
         }
 
         .pricing-card.featured {
             border: 2px solid var(--primary);
-            position: relative;
+            box-shadow: 0 10px 30px rgba(37,99,235,0.15);
         }
 
         .price {
-            font-size: 42px;
-            color: var(--dark);
+            font-size: 38px;
+            color: var(--secondary);
             font-weight: 800;
-            margin: 20px 0;
+            margin: 15px 0;
         }
 
-        .price span { font-size: 16px; color: var(--gray); }
+        .price span { font-size: 15px; color: var(--text-muted); font-weight: normal; }
 
         .pricing-features {
             list-style: none;
-            margin-bottom: 30px;
+            margin: 20px 0 30px 0;
         }
 
         .pricing-features li {
-            padding: 10px 0;
+            padding: 8px 0;
             border-bottom: 1px solid #f1f5f9;
-            color: var(--gray);
+            color: var(--text-muted);
+            font-size: 14px;
         }
 
-        /* Contact */
-        .contact-container {
+        /* Contact Form */
+        .contact-box {
             background: white;
-            padding: 50px;
+            padding: 40px;
             border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            max-width: 600px;
+            border: 1px solid #e2e8f0;
+            max-width: 550px;
             margin: 0 auto;
         }
 
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; }
+        .form-group { margin-bottom: 18px; }
+        .form-group label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 14px; }
         .form-group input, .form-group textarea {
             width: 100%;
             padding: 12px;
             border: 1px solid #cbd5e1;
             border-radius: 8px;
-            font-size: 15px;
+            font-size: 14px;
         }
 
         /* Footer */
         footer {
-            background: var(--dark);
+            background: var(--secondary);
             color: #94a3b8;
-            padding: 40px 8%;
+            padding: 30px 8%;
             text-align: center;
-            border-top: 1px solid #334155;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Navigation -->
+    <!-- Demo Bar Header -->
+    <div class="demo-bar">
+        <div><span class="demo-badge">Theme 01</span> <strong>Corporate Blue Template</strong> (Starter Landing Package)</div>
+        <div>Sweet Dreams Web Studio</div>
+    </div>
+
+    <!-- Website Header -->
     <header>
-        <div class="logo">Agency<span>Theme</span></div>
+        <div class="logo">
+            <div class="logo-icon"></div>
+            ApexCorp
+        </div>
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
         <a href="#contact" class="btn btn-primary">Get Started</a>
@@ -257,131 +355,162 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div>
-            <h1>We Build Digital Products & Experiences</h1>
-            <p>A modern responsive theme designed for digital agencies, consultants, and tech startups.</p>
-            <a href="#pricing" class="btn btn-primary">View Pricing</a>
+            <h1>Scale Your Business With Modern Digital Solutions</h1>
+            <p>We build high-converting landing pages, corporate websites, and modern web apps tailored to fuel your growth.</p>
+            <div class="hero-buttons">
+                <a href="#pricing" class="btn btn-primary">Our Packages</a>
+                <a href="#portfolio" class="btn" style="background: #e2e8f0; color: #1e293b;">View Work</a>
+            </div>
         </div>
-        <div class="hero-img">
-            [ Placeholder: Hero Image / Mockup ]
+
+        <!-- Simulated UI Dashboard -->
+        <div class="hero-ui-sim">
+            <div class="ui-header">
+                <div class="ui-dot dot-red"></div>
+                <div class="ui-dot dot-yellow"></div>
+                <div class="ui-dot dot-green"></div>
+            </div>
+            <p style="font-weight: bold; font-size: 14px; margin-bottom: 10px;">Analytics Overview</p>
+            <div class="ui-chart-sim">
+                <div class="chart-bar" style="height: 40%;"></div>
+                <div class="chart-bar" style="height: 65%;"></div>
+                <div class="chart-bar" style="height: 50%;"></div>
+                <div class="chart-bar" style="height: 85%;"></div>
+                <div class="chart-bar" style="height: 70%;"></div>
+                <div class="chart-bar" style="height: 100%;"></div>
+            </div>
         </div>
     </section>
 
     <!-- Stats Bar -->
     <section class="stats">
         <div class="stat-item">
-            <h3>250+</h3>
-            <p>Projects Delivered</p>
+            <h3>150+</h3>
+            <p>Projects Launched</p>
         </div>
         <div class="stat-item">
-            <h3>99%</h3>
-            <p>Client Satisfaction</p>
+            <h3>99.4%</h3>
+            <p>Client Retention</p>
         </div>
         <div class="stat-item">
-            <h3>15+</h3>
-            <p>Awards Won</p>
+            <h3>10x</h3>
+            <p>Faster Delivery</p>
         </div>
         <div class="stat-item">
             <h3>24/7</h3>
-            <p>Technical Support</p>
+            <p>Dedicated Support</p>
         </div>
     </section>
 
     <!-- Services Section -->
     <section class="section" id="services">
         <div class="section-header">
-            <h2>Our Specialized Services</h2>
-            <p>High quality solutions tailored to grow your business online.</p>
+            <h2>Our Core Services</h2>
+            <p>Everything you need to build a powerful online presence.</p>
         </div>
         <div class="grid-3">
             <div class="card">
                 <div class="card-icon">01</div>
-                <h3>Web Development</h3>
-                <p>Clean, semantic HTML5 & CSS3 code built for maximum performance and speed.</p>
+                <h3>Custom Web Design</h3>
+                <p>Tailor-made, responsive layouts designed strictly around your brand identity and goals.</p>
             </div>
             <div class="card">
                 <div class="card-icon">02</div>
-                <h3>UI/UX Design</h3>
-                <p>User-centered interface designs that deliver seamless visual experiences.</p>
+                <h3>Speed & Performance</h3>
+                <p>Lightning-fast page load times engineered to boost conversions and Google SEO rankings.</p>
             </div>
             <div class="card">
                 <div class="card-icon">03</div>
-                <h3>Digital Marketing</h3>
-                <p>Strategic campaigns engineered to convert visitors into active customers.</p>
+                <h3>Growth Integration</h3>
+                <p>Seamless connection to analytics, contact forms, and automated business workflows.</p>
             </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="section" style="background-color: #f1f5f9;" id="portfolio">
+        <div class="section-header">
+            <h2>Featured Projects</h2>
+            <p>A quick glimpse into our recent successful client launches.</p>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item port-1">Fintech SaaS Platform</div>
+            <div class="portfolio-item port-2">E-Commerce Experience</div>
+            <div class="portfolio-item port-3">Corporate Advisory Site</div>
         </div>
     </section>
 
     <!-- Pricing Section -->
-    <section class="section" style="background-color: #f1f5f9;" id="pricing">
+    <section class="section" id="pricing">
         <div class="section-header">
-            <h2>Flexible Pricing Plans</h2>
-            <p>Choose the right plan for your business scale.</p>
+            <h2>Simple, Transparent Pricing</h2>
+            <p>Choose the plan that fits your current goals.</p>
         </div>
         <div class="grid-3">
             <div class="pricing-card">
-                <h3>Starter</h3>
-                <div class="price">$499<span>/project</span></div>
+                <h3>Starter Page</h3>
+                <div class="price">$499<span>/one-time</span></div>
                 <ul class="pricing-features">
-                    <li>Single Landing Page</li>
-                    <li>Responsive Layout</li>
-                    <li>Basic SEO Setup</li>
-                    <li>1 Month Support</li>
+                    <li>Single Page Landing Design</li>
+                    <li>Fully Mobile Responsive</li>
+                    <li>Contact Form Integration</li>
+                    <li>Basic On-Page SEO</li>
                 </ul>
-                <a href="#contact" class="btn btn-primary" style="background: #64748b;">Select Plan</a>
+                <a href="#contact" class="btn" style="background: #e2e8f0; color: #1e293b; width: 100%;">Select Starter</a>
             </div>
             <div class="pricing-card featured">
-                <h3>Professional</h3>
-                <div class="price">$999<span>/project</span></div>
+                <h3>Business Growth</h3>
+                <div class="price">$999<span>/one-time</span></div>
                 <ul class="pricing-features">
-                    <li>Up to 5 Pages</li>
-                    <li>Custom UI Components</li>
-                    <li>Advanced SEO Optimization</li>
-                    <li>3 Months Support</li>
+                    <li>Up to 5 Custom Pages</li>
+                    <li>Advanced UI Animations</li>
+                    <li>Speed Optimization</li>
+                    <li>3 Months Priority Support</li>
                 </ul>
-                <a href="#contact" class="btn btn-primary">Select Plan</a>
+                <a href="#contact" class="btn btn-primary" style="width: 100%;">Select Business</a>
             </div>
             <div class="pricing-card">
-                <h3>Enterprise</h3>
-                <div class="price">$1999<span>/project</span></div>
+                <h3>Custom Enterprise</h3>
+                <div class="price">$1,899<span>/one-time</span></div>
                 <ul class="pricing-features">
-                    <li>Full Custom Development</li>
-                    <li>E-Commerce Integration</li>
-                    <li>Speed Optimization</li>
-                    <li>12 Months Support</li>
+                    <li>Full Custom Web Application</li>
+                    <li>Database Integration</li>
+                    <li>E-Commerce Capabilities</li>
+                    <li>12 Months Maintenance</li>
                 </ul>
-                <a href="#contact" class="btn btn-primary" style="background: #64748b;">Select Plan</a>
+                <a href="#contact" class="btn" style="background: #e2e8f0; color: #1e293b; width: 100%;">Contact Us</a>
             </div>
         </div>
     </section>
 
-    <!-- Contact Form Section -->
-    <section class="section" id="contact">
+    <!-- Contact Section -->
+    <section class="section" style="background-color: #f1f5f9;" id="contact">
         <div class="section-header">
-            <h2>Get In Touch</h2>
-            <p>Send us a message and we'll reply within 24 hours.</p>
+            <h2>Ready to Upgrade Your Web Presence?</h2>
+            <p>Send us a brief note about your project and we’ll get back to you within 24 hours.</p>
         </div>
-        <div class="contact-container">
-            <form>
+        <div class="contact-box">
+            <form onsubmit="event.preventDefault(); alert('Demo Form Submitted!');">
                 <div class="form-group">
                     <label>Full Name</label>
                     <input type="text" placeholder="John Doe" required>
                 </div>
                 <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="email" placeholder="john@example.com" required>
+                    <label>Work Email</label>
+                    <input type="email" placeholder="john@company.com" required>
                 </div>
                 <div class="form-group">
-                    <label>Message</label>
-                    <textarea rows="4" placeholder="Tell us about your project..."></textarea>
+                    <label>Project Details</label>
+                    <textarea rows="4" placeholder="Describe your project needs..."></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Inquiry</button>
             </form>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>© 2026 Agency Theme Package | Developed by Sweet Dreams Web Studio</p>
+        <p>© 2026 ApexCorp Demo | Powered by Theme 01 - Sweet Dreams Web Studio</p>
     </footer>
 
 </body>
