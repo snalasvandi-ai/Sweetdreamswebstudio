@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My First Website | وب‌سایت من</title>
+    
+    <style>
+        /* استایل کلی صفحه */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* برای اینکه فوتر همیشه در پایین صفحه قرار بگیره */
+        }
+
+        /* استایل منوی بالای سایت (Navbar) */
+        .navbar {
+            background-color: #1d3557;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .navbar .logo {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar a {
+            color: #f1faee;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #e76f51;
+        }
+
+        /* محتوای اصلی داخل صفحه */
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            flex: 1; /* باعث میشه بخش اصلی فضای خالی صفحه رو پر کنه */
+        }
+
+        /* کارت‌ها */
+        .card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid #2a9d8f;
+        }
+
+        h1 {
+            color: #1d3557;
+            font-size: 22px;
+            margin-top: 0;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .card a {
+            color: #e76f51;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .card a:hover {
+            text-decoration: underline;
+        }
+
+        button {
+            background-color: #2a9d8f;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #218376;
+        }
+
+        .image-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        img {
+            border-radius: 12px;
+            max-width: 100%;
+            height: auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* استایل بخش فوتر (Footer) */
+        footer {
+            background-color: #1d3557;
+            color: #f1faee;
+            text-align: center;
+            padding: 15px 10px;
+            font-size: 14px;
+            margin-top: 30px;
+        }
+
+        footer p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- منوی بالای سایت -->
+    <nav class="navbar">
+    <div class="logo">My Portfolio</div>
+    <ul>
+        <li><a href="index.html">خانه / Home</a></li>
+        <li><a href="about.html">درباره ما / About</a></li>
+        <li><a href="contact.html">تماس / Contact</a></li>
+    </ul>
+</nav>
+
+    <!-- محتوای اصلی -->
+    <div class="container">
+
+        <!-- بخش فارسی -->
+        <div class="card" dir="rtl" lang="fa">
+            <h1>سلام دنیا! به وب‌سایت من خوش آمدید.</h1>
+            <p>من در حال یادگیری طراحی وب هستم.</p>
+            <p><a href="https://google.com" target="_blank">برای جستجو کلیک کنید</a></p>
+            <button onclick="alert('سلام!')">روی من کلیک کن</button>
+        </div>
+
+        <!-- بخش انگلیسی -->
+        <div class="card" dir="ltr" lang="en">
+            <h1>Hello World! Welcome to my website.</h1>
+            <p>I am learning web design.</p>
+            <p><a href="https://google.com" target="_blank">Click here to search</a></p>
+            <button onclick="alert('Hello!')">Click Me</button>
+        </div>
+
+        <!-- بخش فرانسوی کانادایی -->
+        <div class="card" dir="ltr" lang="fr-CA">
+            <h1>Bonjour tout le monde! Bienvenue sur mon site web.</h1>
+            <p>J'apprends le design web.</p>
+            <p><a href="https://google.com" target="_blank">Cliquez ici pour chercher</a></p>
+            <button onclick="alert('Bonjour!')">Cliquez ici</button>
+        </div>
+
+        <!-- بخش تصویر -->
+        <div class="image-container">
+            <img src="https://picsum.photos/500/250" alt="تصویر نمونه / Sample Image">
+        </div>
+
+    </div>
+
+    <!-- فوتر پایین سایت -->
+    <footer>
+        <p>© 2026 My Multilingual Website. All rights reserved.</p>
+        <p>طراحی شده با HTML & CSS در کروم‌بوک</p>
+    </footer>
+
+</body>
+</html>

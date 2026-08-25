@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تماس با ما | Contact Us | Contactez-nous</title>
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background-color: #1d3557;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .navbar .logo {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .navbar ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar a {
+            color: #f1faee;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #e76f51;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            flex: 1;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid #2a9d8f;
+        }
+
+        h2 {
+            color: #1d3557;
+            margin-top: 0;
+            font-size: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        button {
+            background-color: #2a9d8f;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #218376;
+        }
+
+        footer {
+            background-color: #1d3557;
+            color: #f1faee;
+            text-align: center;
+            padding: 15px 10px;
+            font-size: 14px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- منوی بالای سایت -->
+    <nav class="navbar">
+        <div class="logo">My Portfolio</div>
+        <ul>
+            <li><a href="index.html">خانه / Home</a></li>
+            <li><a href="about.html">درباره ما / About</a></li>
+            <li><a href="contact.html">تماس / Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- محتوای اصلی: فرم تماس سه زبانه -->
+    <!-- محتوای اصلی: فرم تماس سه زبانه -->
+    <div class="container">
+
+        <!-- ۱. بخش فارسی -->
+        <div class="card" dir="rtl" lang="fa">
+            <h2>فرم تماس (فارسی)</h2>
+            <!-- باکس پیام فارسی -->
+            <div id="faAlert" style="display:none; padding: 10px; margin-bottom: 15px; border-radius: 6px; font-weight: bold;"></div>
+            
+            <form>
+                <div class="form-group">
+                    <label>نام شما:</label>
+                    <input type="text" id="faName" placeholder="مثال: علی رضایی">
+                </div>
+                <div class="form-group">
+                    <label>ایمیل:</label>
+                    <input type="email" id="faEmail" placeholder="name@example.com">
+                </div>
+                <div class="form-group">
+                    <label>پیام شما:</label>
+                    <textarea id="faMessage" rows="3" placeholder="متن پیام خود را بنویسید..."></textarea>
+                </div>
+                <button type="button" onclick="sendFaMessage()">ارسال پیام</button>
+            </form>
+        </div>
+
+        <!-- ۲. بخش انگلیسی -->
+        <div class="card" dir="ltr" lang="en">
+            <h2>Contact Form (English)</h2>
+            <!-- باکس پیام انگلیسی -->
+            <div id="enAlert" style="display:none; padding: 10px; margin-bottom: 15px; border-radius: 6px; font-weight: bold;"></div>
+
+            <form>
+                <div class="form-group">
+                    <label>Your Name:</label>
+                    <input type="text" id="enName" placeholder="e.g. John Doe">
+                </div>
+                <div class="form-group">
+                    <label>Email Address:</label>
+                    <input type="email" id="enEmail" placeholder="name@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Your Message:</label>
+                    <textarea id="enMessage" rows="3" placeholder="Type your message here..."></textarea>
+                </div>
+                <button type="button" onclick="sendEnMessage()">Send Message</button>
+            </form>
+        </div>
+
+        <!-- ۳. بخش فرانسوی کانادایی -->
+        <div class="card" dir="ltr" lang="fr-CA">
+            <h2>Formulaire de contact (Français)</h2>
+            <!-- باکس پیام فرانسوی -->
+            <div id="frAlert" style="display:none; padding: 10px; margin-bottom: 15px; border-radius: 6px; font-weight: bold;"></div>
+
+            <form>
+                <div class="form-group">
+                    <label>Votre nom :</label>
+                    <input type="text" id="frName" placeholder="ex. Jean Tremblay">
+                </div>
+                <div class="form-group">
+                    <label>Adresse courriel :</label>
+                    <input type="email" id="frEmail" placeholder="nom@exemple.com">
+                </div>
+                <div class="form-group">
+                    <label>Votre message :</label>
+                    <textarea id="frMessage" rows="3" placeholder="Écrivez votre message ici..."></textarea>
+                </div>
+                <button type="button" onclick="sendFrMessage()">Envoyer le message</button>
+            </form>
+        </div>
+                
+
+    <!-- فوتر -->
+    <footer>
+        <p>© 2026 My Multilingual Website. All rights reserved.</p>
+    </footer>
+<!-- کدهای هوشمندسازی فرم به ۳ زبان با جاوااسکریپت -->
+    <script>
+        // ۱. تابع فارسی
+        function sendFaMessage() {
+            let name = document.getElementById('faName').value;
+            let email = document.getElementById('faEmail').value;
+            let alertBox = document.getElementById('faAlert');
+
+            alertBox.style.display = "block"; // نمایش دادن باکس
+
+            if (name.trim() === "" || email.trim() === "") {
+                alertBox.style.backgroundColor = "#ffdddd";
+                alertBox.style.color = "#d8000c";
+                alertBox.innerText = "لطفاً نام و ایمیل خود را وارد کنید!";
+            } else {
+                alertBox.style.backgroundColor = "#ddffdd";
+                alertBox.style.color = "#4F8A10";
+                alertBox.innerText = "متشکرم " + name + " عزیز! پیام شما با موفقیت دریافت شد.";
+            }
+        }
+
+        // ۲. تابع انگلیسی
+        function sendEnMessage() {
+            let name = document.getElementById('enName').value;
+            let email = document.getElementById('enEmail').value;
+            let alertBox = document.getElementById('enAlert');
+
+            alertBox.style.display = "block";
+
+            if (name.trim() === "" || email.trim() === "") {
+                alertBox.style.backgroundColor = "#ffdddd";
+                alertBox.style.color = "#d8000c";
+                alertBox.innerText = "Please enter both your name and email address!";
+            } else {
+                alertBox.style.backgroundColor = "#ddffdd";
+                alertBox.style.color = "#4F8A10";
+                alertBox.innerText = "Thank you " + name + "! Your message has been received successfully.";
+            }
+        }
+
+        // ۳. تابع فرانسوی
+        function sendFrMessage() {
+            let name = document.getElementById('frName').value;
+            let email = document.getElementById('frEmail').value;
+            let alertBox = document.getElementById('frAlert');
+
+            alertBox.style.display = "block";
+
+            if (name.trim() === "" || email.trim() === "") {
+                alertBox.style.backgroundColor = "#ffdddd";
+                alertBox.style.color = "#d8000c";
+                alertBox.innerText = "Veuillez entrer votre nom et votre adresse courriel!";
+            } else {
+                alertBox.style.backgroundColor = "#ddffdd";
+                alertBox.style.color = "#4F8A10";
+                alertBox.innerText = "Merci " + name + "! Votre message a été reçu avec succès.";
+            }
+        }
+    </script> 
+</body>
+
+</html>
