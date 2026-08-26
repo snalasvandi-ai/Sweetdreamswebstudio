@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme 1: Corporate Blue | Starter Landing Page Interactive Demo</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #0f172a;
+            --accent: #3b82f6;
+            --light-bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Top Demo Bar & Interactive Controls */
+        .demo-bar {
+            background: #1e293b;
+            color: white;
+            padding: 12px 5%;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .demo-badge {
+            background: var(--primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .demo-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 13px;
+        }
+
+        .color-picker-btn {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 2px solid white;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        /* Navbar */
+        header {
+            background-color: #ffffff;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 34px;
+            height: 34px;
+            background: var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover { color: var(--primary); }
+
+        .btn {
+            padding: 10px 22px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            display: inline-block;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+        }
+
+        .btn-primary:hover { 
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 8%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            background: linear-gradient(180deg, #ffffff 0%, #eff6ff 100%);
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            color: var(--secondary);
+            line-height: 1.25;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 17px;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Simulated Dashboard Container */
+        .hero-ui-sim {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+        }
+
+        .ui-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .ui-dots { display: flex; gap: 8px; }
+        .ui-dot { width: 12px; height: 12px; border-radius: 50%; }
+        .dot-red { background: #ef4444; }
+        .dot-yellow { background: #f59e0b; }
+        .dot-green { background: #10b981; }
+
+        .ui-chart-sim {
+            height: 160px;
+            background: linear-gradient(180deg, rgba(37,99,235,0.1) 0%, rgba(255,255,255,0) 100%);
+            border-bottom: 2px solid var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            padding: 10px;
+        }
+
+        .chart-bar {
+            width: 12%;
+            background: var(--primary);
+            border-radius: 4px 4px 0 0;
+            transition: height 0.5s;
+        }
+
+        /* Stats Bar */
+        .stats {
+            background: var(--secondary);
+            color: white;
+            padding: 40px 8%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            text-align: center;
+            gap: 20px;
+        }
+
+        .stat-item h3 { font-size: 32px; color: #60a5fa; margin-bottom: 5px; }
+        .stat-item p { color: #94a3b8; font-size: 13px; font-weight: 600; text-transform: uppercase; }
+
+        /* Services Section */
+        .section { padding: 80px 8%; }
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-header h2 { font-size: 32px; color: var(--secondary); margin-bottom: 10px; }
+        .section-header p { color: var(--text-muted); font-size: 16px; }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 35px 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 25px rgba(37,99,235,0.1);
+            border-color: var(--primary);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: #dbeafe;
+            color: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .card-action {
+            margin-top: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Portfolio Visual Showcase */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .portfolio-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        .portfolio-img-sim {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .port-1 { background: linear-gradient(135deg, #2563eb, #1d4ed8); }
+        .port-2 { background: linear-gradient(135deg, #0f172a, #334155); }
+        .port-3 { background: linear-gradient(135deg, #0284c7, #06b6d4); }
+
+        .portfolio-info {
+            padding: 20px;
+        }
+
+        .portfolio-info h4 { font-size: 18px; color: var(--secondary); margin-bottom: 5px; }
+        .portfolio-info p { font-size: 13px; color: var(--text-muted); }
+
+        /* Pricing Table */
+        .pricing-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            border: 1px solid #e2e8f0;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--primary);
+            box-shadow: 0 10px 30px rgba(37,99,235,0.15);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .price {
+            font-size: 38px;
+            color: var(--secondary);
+            font-weight: 800;
+            margin: 15px 0;
+        }
+
+        .price span { font-size: 15px; color: var(--text-muted); font-weight: normal; }
+
+        .pricing-features {
+            list-style: none;
+            margin: 20px 0 30px 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #f1f5f9;
+            color: var(--text-muted);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pricing-features li::before {
+            content: "✓";
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Contact Form Simulation */
+        .contact-box {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            max-width: 550px;
+            margin: 0 auto;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+        }
+
+        .form-group { margin-bottom: 18px; }
+        .form-group label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 14px; }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--primary);
+        }
+
+        .form-status {
+            display: none;
+            margin-top: 15px;
+            padding: 12px;
+            background: #dcfce7;
+            color: #166534;
+            border-radius: 8px;
+            font-size: 14px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: #94a3b8;
+            padding: 30px 8%;
+            text-align: center;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Interactive Customizer Demo Bar -->
+    <div class="demo-bar">
+        <div>
+            <span class="demo-badge">Theme 01</span> 
+            <strong>Corporate Blue Template</strong> (Interactive Starter Package Simulation)
+        </div>
+        <div class="demo-controls">
+            <span>Test Brand Color:</span>
+            <span class="color-picker-btn" style="background: #2563eb;" onclick="changeBrandColor('#2563eb')"></span>
+            <span class="color-picker-btn" style="background: #059669;" onclick="changeBrandColor('#059669')"></span>
+            <span class="color-picker-btn" style="background: #dc2626;" onclick="changeBrandColor('#dc2626')"></span>
+            <span class="color-picker-btn" style="background: #7c3aed;" onclick="changeBrandColor('#7c3aed')"></span>
+        </div>
+    </div>
+
+    <!-- Website Header -->
+    <header>
+        <div class="logo">
+            <div class="logo-icon" id="brandLogo">A</div>
+            <span id="brandName">ApexCorp</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+            </ul>
+        </nav>
+        <a href="#contact" class="btn btn-primary">Get Started</a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div>
+            <h1 id="heroTitle">Scale Your Corporate Growth With Modern Digital Solutions</h1>
+            <p>We build high-converting landing pages, corporate websites, and modern web applications tailored to fuel your sales pipeline.</p>
+            <div class="hero-buttons">
+                <a href="#pricing" class="btn btn-primary">Our Packages</a>
+                <a href="#portfolio" class="btn btn-outline">View Work</a>
+            </div>
+        </div>
+
+        <!-- Simulated Interactive Dashboard -->
+        <div class="hero-ui-sim">
+            <div class="ui-header">
+                <div class="ui-dots">
+                    <div class="ui-dot dot-red"></div>
+                    <div class="ui-dot dot-yellow"></div>
+                    <div class="ui-dot dot-green"></div>
+                </div>
+                <span style="font-size: 12px; font-weight: bold; color: var(--text-muted);">Simulated Client Analytics</span>
+            </div>
+            <p style="font-weight: bold; font-size: 14px; margin-bottom: 10px;">Monthly Conversion Rate (+42%)</p>
+            <div class="ui-chart-sim">
+                <div class="chart-bar" style="height: 40%;"></div>
+                <div class="chart-bar" style="height: 65%;"></div>
+                <div class="chart-bar" style="height: 50%;"></div>
+                <div class="chart-bar" style="height: 85%;"></div>
+                <div class="chart-bar" style="height: 70%;"></div>
+                <div class="chart-bar" style="height: 100%;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="stats">
+        <div class="stat-item">
+            <h3>150+</h3>
+            <p>Projects Delivered</p>
+        </div>
+        <div class="stat-item">
+            <h3>99.4%</h3>
+            <p>Satisfaction Rate</p>
+        </div>
+        <div class="stat-item">
+            <h3>3-5 Days</h3>
+            <p>Average Turnaround</p>
+        </div>
+        <div class="stat-item">
+            <h3>24/7</h3>
+            <p>Dedicated Support</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="section-header">
+            <h2>Our Core Services</h2>
+            <p>Everything required to establish an immediate, professional web presence.</p>
+        </div>
+        <div class="grid-3">
+            <div class="card">
+                <div>
+                    <div class="card-icon">01</div>
+                    <h3>Custom UI/UX Design</h3>
+                    <p>Tailor-made, responsive layouts designed strictly around your brand identity and business goals.</p>
+                </div>
+                <a href="#contact" class="card-action">Request Layout →</a>
+            </div>
+            <div class="card">
+                <div>
+                    <div class="card-icon">02</div>
+                    <h3>Performance & Speed</h3>
+                    <p>Lightning-fast page load times engineered to boost lead conversions and search engine rankings.</p>
+                </div>
+                <a href="#contact" class="card-action">Optimize Site →</a>
+            </div>
+            <div class="card">
+                <div>
+                    <div class="card-icon">03</div>
+                    <h3>Lead Integration</h3>
+                    <p>Seamless connection to email alerts, contact forms, and automated business workflows.</p>
+                </div>
+                <a href="#contact" class="card-action">Connect Tools →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="section" style="background-color: #f1f5f9;" id="portfolio">
+        <div class="section-header">
+            <h2>Featured Projects</h2>
+            <p>Simulated showcase of recent client website implementations.</p>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-card">
+                <div class="portfolio-img-sim port-1">Fintech SaaS Platform</div>
+                <div class="portfolio-info">
+                    <h4>Fintech Dashboard Landing</h4>
+                    <p>High-converting SaaS landing page with lead forms.</p>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <div class="portfolio-img-sim port-2">E-Commerce Experience</div>
+                <div class="portfolio-info">
+                    <h4>Retail Brand Portal</h4>
+                    <p>Clean minimal design for single-product sales.</p>
+                </div>
+            </div>
+            <div class="portfolio-card">
+                <div class="portfolio-img-sim port-3">Corporate Advisory Site</div>
+                <div class="portfolio-info">
+                    <h4>Consulting Firm Site</h4>
+                    <p>Professional identity site for business advisors.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section" id="pricing">
+        <div class="section-header">
+            <h2>Simple, Transparent Packages</h2>
+            <p>Select the option that fits your immediate timeline and business goals.</p>
+        </div>
+        <div class="grid-3">
+            <div class="pricing-card">
+                <h3>Starter Package</h3>
+                <div class="price">$499<span>/one-time</span></div>
+                <ul class="pricing-features">
+                    <li>Single Page Landing Design</li>
+                    <li>Mobile & Tablet Responsive</li>
+                    <li>Contact Form & Email Setup</li>
+                    <li>Basic On-Page SEO</li>
+                    <li>3-5 Day Delivery</li>
+                </ul>
+                <a href="#contact" class="btn btn-outline" style="width: 100%;">Select Starter</a>
+            </div>
+
+            <div class="pricing-card featured">
+                <div class="popular-badge">Most Popular</div>
+                <h3>Business Growth</h3>
+                <div class="price">$999<span>/one-time</span></div>
+                <ul class="pricing-features">
+                    <li>Up to 5 Custom Pages</li>
+                    <li>Advanced UI Animations</li>
+                    <li>Speed & Performance Tuning</li>
+                    <li>3 Months Priority Maintenance</li>
+                    <li>7-10 Day Delivery</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary" style="width: 100%;">Select Business</a>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Custom Enterprise</h3>
+                <div class="price">$1,899<span>/one-time</span></div>
+                <ul class="pricing-features">
+                    <li>Full Multi-page Web Application</li>
+                    <li>Custom Integration & Database</li>
+                    <li>E-Commerce Store Setup</li>
+                    <li>12 Months Support & Hosting</li>
+                </ul>
+                <a href="#contact" class="btn btn-outline" style="width: 100%;">Contact Sales</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Simulation -->
+    <section class="section" style="background-color: #f1f5f9;" id="contact">
+        <div class="section-header">
+            <h2>Ready to Upgrade Your Online Presence?</h2>
+            <p>Send a brief note about your project to test the simulated contact workflow.</p>
+        </div>
+        <div class="contact-box">
+            <form id="simulationForm" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="e.g. Sarah Jenkins" required>
+                </div>
+                <div class="form-group">
+                    <label>Work Email</label>
+                    <input type="email" placeholder="sarah@company.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Project Scope</label>
+                    <textarea rows="4" placeholder="Tell us about your project requirements..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Inquiry (Simulation)</button>
+            </form>
+            <div class="form-status" id="formStatus">
+                ✓ Message simulated successfully! In production, this goes straight to your inbox.
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 <span id="footerBrand">ApexCorp</span> Demo | Powered by Theme 01 - Sweet Dreams Web Studio</p>
+    </footer>
+
+    <!-- Interactive Simulation Script -->
+    <script>
+        function changeBrandColor(color) {
+            document.documentElement.style.setProperty('--primary', color);
+            document.documentElement.style.setProperty('--primary-dark', color);
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const statusBox = document.getElementById('formStatus');
+            statusBox.style.display = 'block';
+            setTimeout(() => {
+                statusBox.style.display = 'none';
+                document.getElementById('simulationForm').reset();
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
