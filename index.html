@@ -51,7 +51,7 @@
             color: #60a5fa;
         }
 
-        /* Header */
+        /* Header & Main Navigation */
         header {
             background: white;
             padding: 20px 8%;
@@ -65,12 +65,13 @@
         }
 
         .logo {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 800;
             color: var(--secondary);
             display: flex;
             align-items: center;
             gap: 10px;
+            text-decoration: none;
         }
 
         .logo-icon {
@@ -88,7 +89,7 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 25px;
+            gap: 20px;
         }
 
         nav a {
@@ -96,6 +97,11 @@
             color: var(--text-main);
             font-weight: 600;
             font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
         }
 
         .btn {
@@ -117,7 +123,7 @@
             background: var(--primary-dark);
         }
 
-        /* Multilingual Hero */
+        /* Hero Section */
         .hero {
             padding: 60px 8%;
             background: linear-gradient(180deg, #ffffff 0%, #eff6ff 100%);
@@ -208,7 +214,6 @@
             box-shadow: 0 12px 25px rgba(0,0,0,0.1);
         }
 
-        /* Visual Cards */
         .thumb-preview {
             height: 160px;
             display: flex;
@@ -276,7 +281,7 @@
             text-decoration: none;
             font-weight: 700;
             font-size: 13px;
-            transition: background 0.3s;
+            transition: background 0.3s, color 0.3s;
         }
 
         .card-btn:hover {
@@ -305,16 +310,18 @@
         <a href="#fa">FA - فارسی</a>
     </div>
 
-    <!-- Website Header -->
+    <!-- Header & Main Navigation -->
     <header>
-        <div class="logo">
+        <a href="index.html" class="logo">
             <div class="logo-icon">S</div>
             Sweet Dreams Web Studio
-        </div>
+        </a>
         <nav>
             <ul>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="#templates">Templates</a></li>
-                <li><a href="#en">About</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact Us</a></li>
             </ul>
         </nav>
         <a href="#templates" class="btn btn-primary">Browse Package</a>
@@ -322,7 +329,6 @@
 
     <!-- Multilingual Hero Section -->
     <section class="hero">
-        
         <!-- English -->
         <div class="lang-block" id="en">
             <span class="lang-tag">English</span>
@@ -334,7 +340,7 @@
         <div class="lang-block" id="fr">
             <span class="lang-tag">Français</span>
             <h1>Modèles Web pour Forfait Starter (499 $)</h1>
-            <p>Choisissez un modèle pour votre entreprise. Entièrement adaptatif, personnalisé و prêt en 3 à 5 jours.</p>
+            <p>Choisissez un modèle pour votre entreprise. Entièrement adaptatif, personnalisé et prêt en 3 à 5 jours.</p>
         </div>
 
         <!-- Persian -->
@@ -343,14 +349,13 @@
             <h1>قالب‌های پکیج استارتر ($۴۹۹)</h1>
             <p>تم مورد نظر خود را انتخاب کنید. تمامی قالب‌ها قابل شخصی‌سازی، ریسپانسیو و آماده تحویل ظرف ۳ تا ۵ روز هستند.</p>
         </div>
-
     </section>
 
     <!-- Template Cards Showcase -->
     <section class="section" id="templates">
         <div class="section-title">
             <h2>Starter Templates Collection</h2>
-            <p>Select any theme to view details</p>
+            <p>Select any theme to view live demo</p>
         </div>
 
         <div class="templates-grid">
@@ -434,7 +439,7 @@
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer id="contact">
         <p>© 2026 Sweet Dreams Web Studio - Montreal, QC, Canada</p>
         <p style="font-size: 12px; color: #64748b;">English | Français | فارسی</p>
     </footer>
