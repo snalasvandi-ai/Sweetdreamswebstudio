@@ -1,134 +1,148 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>درباره ما | About Us</title>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Sweet Dreams Web Studio</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f7f6;
-            color: #333333;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --bg-light: #f8fafc;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
         }
 
-        .navbar {
-            background-color: #1d3557;
-            padding: 15px 30px;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        header {
+            background: white;
+            padding: 15px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            border-bottom: 1px solid var(--border);
         }
 
-        .navbar .logo {
-            color: white;
-            font-size: 20px;
-            font-weight: bold;
+        .logo img {
+            height: 45px;
+            width: auto;
         }
 
-        .navbar ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            gap: 20px;
-        }
-
-        .navbar a {
-            color: #f1faee;
+        .back-btn {
+            color: var(--primary);
             text-decoration: none;
-            font-size: 15px;
-            transition: color 0.3s;
-        }
-
-        .navbar a:hover {
-            color: #e76f51;
+            font-weight: 600;
+            font-size: 14px;
         }
 
         .container {
-            padding: 20px;
             max-width: 800px;
-            margin: 0 auto;
-            flex: 1;
-        }
-
-        .card {
-            background-color: #ffffff;
+            margin: 50px auto;
+            background: white;
+            padding: 50px 40px;
             border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-            border-top: 4px solid #e76f51; /* رنگ متفاوت برای تمایز این صفحه */
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
         }
 
         h1 {
-            color: #1d3557;
-            font-size: 22px;
-            margin-top: 0;
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 16px;
+            margin-bottom: 40px;
+        }
+
+        .story-box {
+            background: #f1f5f9;
+            border-left: 4px solid var(--primary);
+            padding: 20px 25px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+        }
+
+        .story-box p {
+            font-size: 16px;
+            color: var(--text-dark);
+            font-style: italic;
         }
 
         p {
-            font-size: 16px;
-            line-height: 1.6;
+            color: var(--text-muted);
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        .owner-tag {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
         footer {
-            background-color: #1d3557;
-            color: #f1faee;
             text-align: center;
-            padding: 15px 10px;
-            font-size: 14px;
-            margin-top: 30px;
+            padding: 30px;
+            font-size: 13px;
+            color: var(--text-muted);
         }
     </style>
 </head>
 <body>
 
-    <!-- منوی بالای سایت -->
-    <!-- منوی یکدست و سالم برای تمامی صفحات -->
-    <nav class="navbar">
-        <div class="logo">My Portfolio</div>
-        <ul>
-            <li><a href="index.html">خانه / Home</a></li>
-            <li><a href="about.html">درباره ما / About</a></li>
-            <li><a href="contact.html">تماس / Contact</a></li>
-            <li><a href="todo.html">لیست کارها / To-Do</a></li>
-            <li><a href="calculator.html">ماشین حساب / Calc</a></li>
-            <li><a href="converter.html">مبدل واحد / Convert</a></li>
-        </ul>
-    </nav>
+    <header>
+        <a href="index.html" class="logo">
+            <img src="logo.png" alt="Sweet Dreams Web Studio">
+        </a>
+        <a href="index.html" class="back-btn">← Back to Home</a>
+    </header>
 
-    <!-- محتوای اصلی صفحه درباره ما -->
     <div class="container">
+        <h1>About Sweet Dreams Web Studio</h1>
+        <p class="subtitle">Crafted with passion, dedication, and a personal touch</p>
 
-        <!-- بخش فارسی -->
-        <div class="card" dir="rtl" lang="fa">
-            <h1>درباره خدمات وب ما</h1>
-            <p>ما خدمات حرفه‌ای طراحی وب‌سایت، دیزاین دیجیتال و راهکارهای آنلاین را به سه زبان ارائه می‌دهیم.</p>
+        <div class="story-box">
+            <p>"The name 'Sweet Dreams' is deeply inspired by my two wonderful children — they are the heart, inspiration, and motivation behind every project we build."</p>
         </div>
 
-        <!-- بخش انگلیسی -->
-        <div class="card" dir="ltr" lang="en">
-            <h1>About Our Web Services</h1>
-            <p>We provide professional web design, digital services, and online solutions in three languages.</p>
-        </div>
+        <p>Welcome to <strong>Sweet Dreams Web Studio</strong>. We specialize in creating high-quality, modern, and high-converting web design solutions tailored for local businesses, creative brands, and personal projects.</p>
 
-        <!-- بخش فرانسوی کانادایی -->
-        <div class="card" dir="ltr" lang="fr-CA">
-            <h1>À propos de nos services web</h1>
-            <p>Nous offrons des services professionnels de conception web, de design numérique et de solutions en ligne en trois langues.</p>
-        </div>
+        <p>Founded and operated by <strong>Nader Alasvandi Toghyan</strong>, our philosophy is rooted in commitment and craftsmanship. We believe that every business, regardless of size, deserves a strong and professional digital presence. Nader and the studio are dedicated to always putting in maximum effort to deliver absolute excellence in every line of code and every design detail.</p>
 
+        <p>From clean multi-page websites to optimized checkout setups, we take pride in transforming our clients' digital goals into beautiful, functional realities.</p>
+
+        <div class="owner-tag">
+            <div>
+                <strong style="color: var(--text-dark); display: block;">Nader Alasvandi Toghyan</strong>
+                <span style="font-size: 13px; color: var(--text-muted);">Founder & Lead Web Developer</span>
+            </div>
+            <a href="index.html#contact" style="background: var(--primary); color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 13px;">Get in Touch</a>
+        </div>
     </div>
 
-    <!-- فوتر -->
     <footer>
-        <p>© 2026 My Multilingual Website. All rights reserved.</p>
+        <p>© Sweet Dreams Web Studio — All Rights Reserved</p>
     </footer>
 
 </body>
