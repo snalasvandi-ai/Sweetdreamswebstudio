@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme 2: Dark Mode SaaS | Starter Landing Page Demo</title>
+    <style>
+        :root {
+            --bg-main: #0b0f19;
+            --bg-card: #111827;
+            --border-color: #1f2937;
+            --primary-neon: #6366f1;
+            --accent-glow: #8b5cf6;
+            --text-title: #f9fafb;
+            --text-body: #9ca3af;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-body);
+            line-height: 1.6;
+        }
+
+        /* Top Demo Bar */
+        .demo-bar {
+            background: #030712;
+            color: #d1d5db;
+            padding: 10px 5%;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .demo-badge {
+            background: linear-gradient(135deg, var(--primary-neon), var(--accent-glow));
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(11, 15, 25, 0.8);
+            backdrop-filter: blur(12px);
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--text-title);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-glow {
+            width: 14px;
+            height: 14px;
+            background: var(--primary-neon);
+            border-radius: 50%;
+            box-shadow: 0 0 12px var(--primary-neon);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: var(--text-body);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover { color: var(--text-title); }
+
+        .btn {
+            padding: 10px 22px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-neon {
+            background: linear-gradient(135deg, var(--primary-neon), var(--accent-glow));
+            color: white;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-neon:hover {
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 100px 8% 80px 8%;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            color: #a5b4fc;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            color: var(--text-title);
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+            line-height: 1.15;
+            font-weight: 800;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #a5b4fc, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 35px auto;
+        }
+
+        /* Simulated App Preview */
+        .app-preview {
+            max-width: 900px;
+            margin: 40px auto 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+        }
+
+        .app-header {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .app-dot { width: 10px; height: 10px; border-radius: 50%; background: #374151; }
+
+        .app-dashboard {
+            height: 250px;
+            background: #030712;
+            border-radius: 8px;
+            border: 1px solid #1f2937;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 15px;
+            padding: 15px;
+        }
+
+        .side-panel {
+            background: #111827;
+            border-radius: 6px;
+            padding: 10px;
+        }
+
+        .main-panel {
+            background: #111827;
+            border-radius: 6px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .skeleton-line {
+            height: 10px;
+            background: #1f2937;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .graph-sim {
+            height: 100px;
+            background: linear-gradient(180deg, rgba(139, 92, 246, 0.2) 0%, rgba(0,0,0,0) 100%);
+            border-bottom: 2px solid var(--accent-glow);
+            border-radius: 4px;
+        }
+
+        /* Features */
+        .section { padding: 90px 8%; }
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 34px;
+            color: var(--text-title);
+            margin-bottom: 10px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--primary-neon);
+            transform: translateY(-50px 0);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.1);
+        }
+
+        .icon-box {
+            width: 42px;
+            height: 42px;
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .feature-card h3 {
+            color: var(--text-title);
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        /* Pricing */
+        .pricing-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 40px 30px;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .pricing-card.popular {
+            border-color: var(--primary-neon);
+            background: linear-gradient(180deg, rgba(99, 102, 241, 0.05) 0%, var(--bg-card) 100%);
+        }
+
+        .price-val {
+            font-size: 42px;
+            color: var(--text-title);
+            font-weight: 800;
+            margin: 20px 0;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 40px 8%;
+            text-align: center;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="demo-bar">
+        <div><span class="demo-badge">Theme 02</span> <strong>Dark Mode SaaS Template</strong> (Starter Package)</div>
+        <div>Sweet Dreams Web Studio</div>
+    </div>
+
+    <header>
+        <div class="logo">
+            <div class="logo-glow"></div>
+            NovaAI
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+            </ul>
+        </nav>
+        <a href="#pricing" class="btn btn-neon">Get Started</a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-tag">⚡ Powered by Next-Gen Analytics</div>
+        <h1>Automate Your Workflow With <span>Intelligent AI</span></h1>
+        <p>Build, scale, and monitor your cloud apps in real-time with zero complex configurations.</p>
+        <a href="#pricing" class="btn btn-neon">Start Free Trial</a>
+
+        <!-- App Simulation -->
+        <div class="app-preview">
+            <div class="app-header">
+                <div class="app-dot"></div>
+                <div class="app-dot"></div>
+                <div class="app-dot"></div>
+            </div>
+            <div class="app-dashboard">
+                <div class="side-panel">
+                    <div class="skeleton-line" style="width: 80%;"></div>
+                    <div class="skeleton-line" style="width: 60%;"></div>
+                    <div class="skeleton-line" style="width: 70%;"></div>
+                </div>
+                <div class="main-panel">
+                    <div>
+                        <div class="skeleton-line" style="width: 40%;"></div>
+                        <div class="skeleton-line" style="width: 90%;"></div>
+                    </div>
+                    <div class="graph-sim"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="features">
+        <div class="section-title">
+            <h2>Engineered For High-Growth Teams</h2>
+            <p>Everything you need to ship products faster.</p>
+        </div>
+        <div class="grid-3">
+            <div class="feature-card">
+                <div class="icon-box">01</div>
+                <h3>Real-Time Metrics</h3>
+                <p>Track performance and usage statistics instantly with microsecond precision.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-box">02</div>
+                <h3>Automated Workflows</h3>
+                <p>Connect your tools and let AI trigger complex business logic automatically.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-box">03</div>
+                <h3>Enterprise Security</h3>
+                <p>End-to-end encryption with advanced role-based access permissions.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="pricing" style="background: #070a12;">
+        <div class="section-title">
+            <h2>Flexible Pricing Plans</h2>
+        </div>
+        <div class="grid-3">
+            <div class="pricing-card">
+                <h3>Starter</h3>
+                <div class="price-val">$29<span>/mo</span></div>
+                <p>Perfect for solo developers and small projects.</p>
+            </div>
+            <div class="pricing-card popular">
+                <h3>Pro SaaS</h3>
+                <div class="price-val">$79<span>/mo</span></div>
+                <p>Best for growing teams requiring full AI automation.</p>
+            </div>
+            <div class="pricing-card">
+                <h3>Enterprise</h3>
+                <div class="price-val">$199<span>/mo</span></div>
+                <p>Custom infrastructure with dedicated 24/7 support.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 NovaAI Demo | Powered by Theme 02 - Sweet Dreams Web Studio</p>
+    </footer>
+
+</body>
+</html>
