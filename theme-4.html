@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme 4: Luxury Real Estate - Sweet Dreams Studio</title>
+    <style>
+        :root {
+            --gold: #d4af37;
+            --dark: #0f172a;
+            --card-bg: #1e293b;
+            --text-light: #f8fafc;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cinzel', 'Playfair Display', serif;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        header {
+            background: #020617;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--gold);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #94a3b8;
+            font-family: sans-serif;
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin: 20px 8% 0 8%;
+            color: var(--gold);
+            font-family: sans-serif;
+            font-size: 13px;
+            text-decoration: none;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 8%;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: var(--gold);
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            font-family: sans-serif;
+        }
+
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 0 8% 60px 8%;
+        }
+
+        .property-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .property-card h3 {
+            color: var(--gold);
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .property-card p {
+            font-family: sans-serif;
+            font-size: 13px;
+            color: #cbd5e1;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            font-family: sans-serif;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            font-family: sans-serif;
+            font-size: 12px;
+            color: #64748b;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-btn">← Back to Templates</a>
+
+    <header>
+        <a href="#" class="logo">LUXURY ESTATES</a>
+        <nav>
+            <a href="#properties">Listings</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Exclusive Living Spaces</h1>
+        <p>Discover high-end residential properties and architectural masterpieces.</p>
+    </section>
+
+    <div class="properties-grid" id="properties">
+        <div class="property-card">
+            <h3>The Penthouse Suite</h3>
+            <p>4 Beds • 3 Baths • Panoramic City View</p>
+            <div class="price">$2,450,000</div>
+        </div>
+        <div class="property-card">
+            <h3>Modern Villa</h3>
+            <p>5 Beds • Private Pool • Smart Home System</p>
+            <div class="price">$3,800,000</div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Theme 04 Preview — Sweet Dreams Web Studio Starter Package</p>
+    </footer>
+
+</body>
+</html>
