@@ -217,10 +217,10 @@
         </a>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#templates">Templates</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="#contact">Contact & Payment</a></li>
+                <li><a href="index.html" id="nav-home">Home</a></li>
+            <li><a href="#templates" id="nav-templates">Templates</a></li>
+            <li><a href="about.html" id="nav-about">About Us</a></li>
+            <li><a href="#contact" id="nav-contact">Contact & Payment</a></li>
             </ul>
         </nav>
         <a href="#templates" class="btn btn-primary">Browse Package</a>
@@ -349,7 +349,77 @@
         <a href="legal.html" style="color: var(--text-muted); text-decoration: underline;">Privacy Policy & Terms of Service</a> | 
         <a href="legal.html" style="color: var(--text-muted); text-decoration: underline;">Refund & Delivery Policy</a>
     </p>
-</footer>
+    <!-- Language Switcher Footer -->
+<div style="margin-top: 15px; text-align: center;">
+    <span style="font-size: 13px; color: var(--text-muted); margin-right: 8px;">Language / Langue / زبان:</span>
+    <button onclick="setLanguage('en')" class="lang-btn">English</button> | 
+    <button onclick="setLanguage('fr')" class="lang-btn">Français</button> | 
+    <button onclick="setLanguage('fa')" class="lang-btn">فارسی</button>
+</div>
 
+<style>
+  .lang-btn {
+      background: none;
+      border: none;
+      color: var(--primary);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 2px 6px;
+  }
+  .lang-btn:hover {
+      text-decoration: underline;
+  }
+</style>
+</footer>
+<script>
+// لیست ترجمه بخش‌های اصلی
+const translations = {
+    en: {
+        dir: "ltr",
+        navHome: "Home",
+        navTemplates: "Templates",
+        navAbout: "About Us",
+        navContact: "Contact & Payment",
+        heroTitle: "Starter Website Package — $499 CAD",
+        heroSubtitle: "Professional, modern, and high-converting web design templates crafted specifically for local businesses and creative studios."
+    },
+    fr: {
+        dir: "ltr",
+        navHome: "Accueil",
+        navTemplates: "Modèles",
+        navAbout: "À Propos",
+        navContact: "Contact & Paiement",
+        heroTitle: "Forfait Site Web Démarrage — 499 $ CAD",
+        heroSubtitle: "Des modèles de conception web professionnels, modernes et performants, conçus pour les entreprises locales et les studios."
+    },
+    fa: {
+        dir: "rtl",
+        navHome: "خانه",
+        navTemplates: "قالب‌ها",
+        navAbout: "درباره ما",
+        navContact: "تماس و پرداخت",
+        heroTitle: "پکیج استارتر وب‌سایت — ۴۹۹ دلار کانادا",
+        heroSubtitle: "قالب‌های حرفه‌ای، مدرن و استاندارد طراحی وب، ویژه کسب‌وکارهای محلی و استودیوهای خلاق."
+    }
+};
+
+function setLanguage(lang) {
+    const data = translations[lang];
+    if (!data) return;
+
+    // تغییر جهت صفحه (چپ‌به‌راست یا راست‌به‌چپ)
+    document.documentElement.dir = data.dir;
+    document.documentElement.lang = lang;
+
+    // آپدیت متن‌ها (در صورت وجود ID)
+    if(document.getElementById('nav-home')) document.getElementById('nav-home').innerText = data.navHome;
+    if(document.getElementById('nav-templates')) document.getElementById('nav-templates').innerText = data.navTemplates;
+    if(document.getElementById('nav-about')) document.getElementById('nav-about').innerText = data.navAbout;
+    if(document.getElementById('nav-contact')) document.getElementById('nav-contact').innerText = data.navContact;
+    if(document.getElementById('hero-title')) document.getElementById('hero-title').innerText = data.heroTitle;
+    if(document.getElementById('hero-subtitle')) document.getElementById('hero-subtitle').innerText = data.heroSubtitle;
+}
+</script>
 </body>
 </html>
